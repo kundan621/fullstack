@@ -1,13 +1,28 @@
+import { Component } from 'react';
 import './counter.scss';
-export default function Counter() {
+export default class counter extends Component {
+
+    constructor(){
+        super();
+        this.state={
+            counter:0
+        }
+        this.increment=this.increment.bind(this);
+    }
+
+    render(){
     return (
       <div className="Counter">
-        <button onClick={increment}>+1</button>
-        <span className="count">0</span>
+        <button onClick={this.increment}>+1</button>
+        <span className="count">{this.state.counter}</span>
       </div>
     );
+    }
+
+     increment(){
+        this.setState({
+            counter: this.state.counter+1,
+        });
+    }
 }
 
-function increment(){
-    console.log('increment')
-}
